@@ -26,7 +26,6 @@ def replace_locale_in_dynamicJS(locale, pathToJSfile):
     for line in data:
         new_file.write("{}".format(line))
 
-# create a function for this and call in the 
 #creating folders for screenshots for each locale, if not present in the directory where script is locacted
 cwd = os.getcwd()
 if not os.path.exists(cwd+'\screenshots'):
@@ -41,18 +40,6 @@ for locale in locales:
 import ctypes
 user32 = ctypes.windll.user32
 screensize = user32.GetSystemMetrics(0), user32.GetSystemMetrics(1)
-
-
-### Instructions
-# 1. Create class defininition: ScreenshotManager - you're not inheriting from any superclass other than Object, so no need to use paren notation - class ScreenshotManager:
-# 2. In __init__ of this class, do test for screenshot directory (private method _check_dir_exists) - def __init__(self, url, pathToJSFile, locales, *args, **kwargs):
-# 3. Set instance variables for url, pathToJSFile, locales; make them private using _ and initialize in the __init__ method: self._url = url  
-# 4. Make replace_locale_in_dynamicJS a class function; locale and path to js file will be class attributes so you can use the self.locale and self.pathToJSFile in the function and you don't have to send arguments: def replace_locale_in_dynamicJS(): will be function declaration
-# 5. Move contents of main into a function: fetch_locale_data
-# 6. Move contents of for loop into a function: driver_execution() (i.e. the while loop and all its contents)
-# 7. create driver instance as class attribute: self.driver = webdriver.Ie()
-# 8. use try except else around each possible point of failure within the while loop; don't have nested try except statements! also, need to find out the specific exceptions that can be thrown instead of catching general exception
-# 9. Create timeout variable with default 60 seconds, fetch current time, adn then break out of the while loop if you reach that timeout
 
 ######
 if __name__ == "__main__":
